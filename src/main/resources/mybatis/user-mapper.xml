@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xkw.repository.UserRepository">
+
+    <select id="getAll" resultType="com.xkw.domain.User">
+        SELECT *
+        FROM user
+    </select>
+
+    <select id="getByParam" resultType="com.xkw.domain.User">
+        select * from user
+        <where>
+            <if test="userName != null">
+                AND user_name = #{userName}
+            </if>
+            <if test="gender != null">
+                AND gender = #{gender}
+            </if>
+        </where>
+        limit #{start}, #{pageSize}
+    </select>
+
+</mapper>
