@@ -1,14 +1,22 @@
 package com.xkw.domain;
 
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+
 public class User {
 
     private int id;
 
+    @NotNull
     private String userName;
-
+    @NotNull
     private String password;
-
+    @NotNull
     private String gender;
+
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
 
     public int getId() {
         return id;
@@ -40,5 +48,21 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }

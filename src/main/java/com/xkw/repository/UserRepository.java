@@ -11,4 +11,12 @@ public interface UserRepository {
     List<User> getAll();
 
     List<User> getByParam(UserParamsVO params);
+
+    int countByParam(UserParamsVO params);
+
+    boolean add(User user);
+
+    boolean update(User user);
+
+    boolean delete(int id);
 }

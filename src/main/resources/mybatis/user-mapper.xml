@@ -5,6 +5,20 @@
 
 <mapper namespace="com.xkw.repository.UserRepository">
 
+    <sql id="condition">
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND user_name = #{userName}
+            </if>
+            <if test="gender != null and gender != ''">
+                AND gender = #{gender}
+            </if>
+        </where>
+    </sql>
+
     <select id="getAll" resultType="com.xkw.domain.User">
         SELECT *
         FROM user
@@ -12,15 +26,32 @@
 
     <select id="getByParam" resultType="com.xkw.domain.User">
         select * from user
-        <where>
-            <if test="userName != null">
-                AND user_name = #{userName}
-            </if>
-            <if test="gender != null">
-                AND gender = #{gender}
-            </if>
-        </where>
+        <include refid="condition"/>
         limit #{start}, #{pageSize}
     </select>
 
+    <select id="countByParam" resultType="int">
+        select count(*) from user
+        <include refid="condition"/>
+        order by id
+    </select>
+
+    <insert id="add" parameterType="com.xkw.domain.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into user
+        value (null, #{userName}, #{password}, #{gender}, now(), now())
+    </insert>
+
+    <update id="update" parameterType="com.xkw.domain.User">
+        update user
+        set user_name = #{userName},
+            password = #{password},
+            gender = #{gender},
+            update_time = #{updateTime}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user
+        where id = #{id}
+    </delete>
 </mapper>
