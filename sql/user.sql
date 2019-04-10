@@ -12,3 +12,11 @@ create table user
 
 create index user_name
   on user (user_name);
+
+create table class
+(
+  id int not null primary key auto_increment,
+  name varchar(50),
+  create_time datetime not null,
+  update_time datetime not null
+);
