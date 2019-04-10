@@ -12,5 +12,3 @@ create table user
 
 create index user_name
   on user (user_name);
-
-drop table user;
