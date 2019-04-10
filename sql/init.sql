@@ -13,7 +13,7 @@ create table user
 create index user_name
   on user (user_name);
 
-create table class
+create table clazz
 (
   id int not null primary key auto_increment,
   name varchar(50),

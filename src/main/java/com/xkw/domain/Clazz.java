@@ -2,7 +2,7 @@ package com.xkw.domain;
 
 import java.time.LocalDateTime;
 
-public class Class {
+public class Clazz {
 
     private int id;
 

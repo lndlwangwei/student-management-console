@@ -15,4 +15,14 @@ class InitDB extends GTestBase {
             sql.executeInsert(sqlStatement)
         }
     }
+
+    def "init clazz"() {
+        expect:
+        200.times {index ->
+            def name = "clazz${index}"
+
+            def sqlStatement = "insert into clazz value (null, '${name}', now(), now())"
+            sql.executeInsert(sqlStatement)
+        }
+    }
 }
