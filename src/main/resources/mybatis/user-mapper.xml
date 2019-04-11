@@ -11,7 +11,7 @@
                 AND id = #{id}
             </if>
             <if test="userName != null and userName != ''">
-                AND user_name = #{userName}
+                AND name = #{name}
             </if>
             <if test="gender != null and gender != ''">
                 AND gender = #{gender}
@@ -38,14 +38,27 @@
 
     <insert id="add" parameterType="com.xkw.domain.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into user
-        value (null, #{userName}, #{password}, #{gender}, now(), now())
+        value (null, #{name}, #{age}, #{gender}, #{cardId}, #{hometown},
+         #{nation}, #{contact}, #{emergencyContact}, #{graduateSchool},
+          #{graduateTime}, #{specialty}, #{score}, #{dormitory}, #{source}, now(), now())
     </insert>
 
     <update id="update" parameterType="com.xkw.domain.User">
         update user
         set user_name = #{userName},
-            password = #{password},
+            age = #{age},
             gender = #{gender},
+            card_id = #{cardId},
+            hometown = #{hometown},
+            nation = #{nation},
+            contact = #{contact},
+            emergency_contact = #{emergencyContact},
+            graduate_school = #{graduateSchool},
+            graduate_time = #{graduateTime},
+            specialty = #{specialty},
+            score = #{scopre},
+            dormitory = #{dormitory},
+            source = #{dormitory},
             update_time = #{updateTime}
         where id = #{id}
     </update>
