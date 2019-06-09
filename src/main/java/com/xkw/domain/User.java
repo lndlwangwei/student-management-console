@@ -1,20 +1,37 @@
 package com.xkw.domain;
 
+import org.springframework.beans.BeanUtils;
+
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
     private int id;
-
+    /**
+     * 姓名
+     */
     @NotNull
     private String name;
-
+    /**
+     * 年龄
+     */
     private int age;
+    /**
+     * 性别
+     */
     @NotNull
     private String gender;
-
+    /**
+     * 身份证号
+     */
     private String cardId;
+    /**
+     * 班级
+     */
+    private String className;
 
     private String hometown;
 
@@ -174,5 +191,56 @@ public class User {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public static void main(String[] args) {
+        User user = new User();
+        user.setId(1);
+        user.setAge(1);
+        user.setGender("1");
+        user.setCardId("1");
+
+        List<User> allUsers = new ArrayList<>();
+        allUsers.add(user);
+        for (int i = 1 ; i < 16; i++) {
+            User user1 = new User();
+            BeanUtils.copyProperties(user, user1);
+
+            if ((i & 1) == 1) user1.setId(-user1.getId());
+            if ((i & 2) == 2) user1.setAge(-user1.getAge());
+            if ((i & 4) == 4) user1.setGender("-"+user1.getGender());
+            if ((i & 8) == 8) user1.setCardId("-"+user1.getCardId());
+
+
+            allUsers.add(user1);
+        }
+
+        System.out.println(allUsers.size());
+        allUsers.forEach(user1 -> System.out.println(user1));
+    }
+
+    private static User getClonedUser(User user) {
+        User user1 = new User();
+        BeanUtils.copyProperties(user, user1);
+
+        return user1;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", cardId='" + cardId + '\'' +
+                '}';
     }
 }

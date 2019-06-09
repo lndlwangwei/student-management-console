@@ -7,9 +7,15 @@ public class UserParamsVO extends Pagination<User> {
 
     private Integer id;
 
-    private String userName;
+    private String name;
 
     private String gender;
+
+    private String className;
+
+    private String dormitory;
+
+    private String source;
 
     public Integer getId() {
         return id;
@@ -19,12 +25,12 @@ public class UserParamsVO extends Pagination<User> {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getGender() {
@@ -33,5 +39,29 @@ public class UserParamsVO extends Pagination<User> {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getDormitory() {
+        return dormitory;
+    }
+
+    public void setDormitory(String dormitory) {
+        this.dormitory = dormitory;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }

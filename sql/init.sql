@@ -7,6 +7,7 @@ create table user
   age int not null,
   gender    varchar(10) default 'male' null,
   card_id  varchar(64)   default     null COMMENT '身份证编号',
+  class_name varchar(128) not null comment '班级',
   hometown varchar(512) comment '籍贯',
   nation varchar(20) comment '民族',
   contact varchar(50) comment '联系方式',

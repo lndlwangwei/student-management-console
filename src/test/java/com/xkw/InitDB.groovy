@@ -12,6 +12,7 @@ class InitDB extends GTestBase {
                 gender = "女"
             }
             def cardId = "cardId${index}"
+            def className = "云计算${index % 10 + 1}班"
             def hometown = "hometown${index}"
             def nation = "nation${index}"
             def contact = "contact${index}"
@@ -20,10 +21,10 @@ class InitDB extends GTestBase {
             def graduateTime = "2018-06-01"
             def specialty = "specialty${index}"
             def score = "score${index}"
-            def dormitory = "dormitory${index}"
+            def dormitory = "dormitory${index % 30 + 1}"
             def source = "source${index}"
             def sqlStatement = "insert into user value (null, '${userName}', '${age}', '${gender}', " +
-                    "'${cardId}', '${hometown}', '${nation}', '${contact}', '${emergencyContact}', '${graduateSchool}'," +
+                    "'${cardId}', '${className}', '${hometown}', '${nation}', '${contact}', '${emergencyContact}', '${graduateSchool}'," +
                     " ${graduateTime}, '${specialty}', '${score}', '${dormitory}', '${source}', now(), now())"
             sql.executeInsert(sqlStatement)
         }
@@ -37,5 +38,9 @@ class InitDB extends GTestBase {
             def sqlStatement = "insert into clazz value (null, '${name}', now(), now())"
             sql.executeInsert(sqlStatement)
         }
+    }
+
+    public static void main(String[] args) {
+        println 5 % 10
     }
 }
