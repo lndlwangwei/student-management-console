@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Student {
 
     private int id;
     /**
@@ -194,36 +194,36 @@ public class User {
     }
 
     public static void main(String[] args) {
-        User user = new User();
-        user.setId(1);
-        user.setAge(1);
-        user.setGender("1");
-        user.setCardId("1");
+        Student student = new Student();
+        student.setId(1);
+        student.setAge(1);
+        student.setGender("1");
+        student.setCardId("1");
 
-        List<User> allUsers = new ArrayList<>();
-        allUsers.add(user);
+        List<Student> allStudents = new ArrayList<>();
+        allStudents.add(student);
         for (int i = 1 ; i < 16; i++) {
-            User user1 = new User();
-            BeanUtils.copyProperties(user, user1);
+            Student student1 = new Student();
+            BeanUtils.copyProperties(student, student1);
 
-            if ((i & 1) == 1) user1.setId(-user1.getId());
-            if ((i & 2) == 2) user1.setAge(-user1.getAge());
-            if ((i & 4) == 4) user1.setGender("-"+user1.getGender());
-            if ((i & 8) == 8) user1.setCardId("-"+user1.getCardId());
+            if ((i & 1) == 1) student1.setId(-student1.getId());
+            if ((i & 2) == 2) student1.setAge(-student1.getAge());
+            if ((i & 4) == 4) student1.setGender("-"+ student1.getGender());
+            if ((i & 8) == 8) student1.setCardId("-"+ student1.getCardId());
 
 
-            allUsers.add(user1);
+            allStudents.add(student1);
         }
 
-        System.out.println(allUsers.size());
-        allUsers.forEach(user1 -> System.out.println(user1));
+        System.out.println(allStudents.size());
+        allStudents.forEach(user1 -> System.out.println(user1));
     }
 
-    private static User getClonedUser(User user) {
-        User user1 = new User();
-        BeanUtils.copyProperties(user, user1);
+    private static Student getClonedUser(Student student) {
+        Student student1 = new Student();
+        BeanUtils.copyProperties(student, student1);
 
-        return user1;
+        return student1;
     }
 
     public String getClassName() {
@@ -236,7 +236,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Student{" +
                 "id=" + id +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +

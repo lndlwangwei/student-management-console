@@ -1,9 +1,9 @@
 package com.xkw.controller.vo;
 
 import com.xkw.common.Pagination;
-import com.xkw.domain.User;
+import com.xkw.domain.Student;
 
-public class UserParamsVO extends Pagination<User> {
+public class UserParamsVO extends Pagination<Student> {
 
     private Integer id;
 

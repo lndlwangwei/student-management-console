@@ -2,8 +2,8 @@ package com.xkw.controller;
 
 import com.xkw.common.Pagination;
 import com.xkw.controller.vo.UserParamsVO;
-import com.xkw.domain.User;
-import com.xkw.service.UserService;
+import com.xkw.domain.Student;
+import com.xkw.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,32 +16,32 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private StudentService studentService;
 
     @GetMapping
-    public Pagination<User> getAll(UserParamsVO params) {
-        int count = userService.countByParam(params);
+    public Pagination<Student> getAll(UserParamsVO params) {
+        int count = studentService.countByParam(params);
 
-        List<User> users = userService.getByParams(params);
+        List<Student> students = studentService.getByParams(params);
 
-        Pagination<User> pagination = new Pagination<>(params.getCurrentPage(), params.getPageSize(), count, users);
+        Pagination<Student> pagination = new Pagination<>(params.getCurrentPage(), params.getPageSize(), count, students);
 
         return pagination;
     }
 
     @PostMapping
-    public User add(@Valid @RequestBody User user) {
-        return userService.add(user);
+    public Student add(@Valid @RequestBody Student student) {
+        return studentService.add(student);
     }
 
     @PutMapping("/{id}")
-    public boolean update(@PathVariable int id, @Valid @RequestBody User user) {
-        user.setId(id);
-        return userService.update(user);
+    public boolean update(@PathVariable int id, @Valid @RequestBody Student student) {
+        student.setId(id);
+        return studentService.update(student);
     }
 
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable int id) {
-        return userService.delete(id);
+        return studentService.delete(id);
     }
 }

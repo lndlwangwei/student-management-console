@@ -1,9 +1,10 @@
 -- auto-generated definition
-create table user
+create table student
 (
   id        int                       not null
     primary key auto_increment,
   name varchar(30)          not     null,
+  password varchar(64) null
   age int not null,
   gender    varchar(10) default 'male' null,
   card_id  varchar(64)   default     null COMMENT '身份证编号',
@@ -23,7 +24,7 @@ create table user
 );
 
 create index name
-  on user (name);
+  on student (name);
 
 create table clazz
 (
