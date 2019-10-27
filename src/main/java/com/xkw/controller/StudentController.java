@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/students")
+public class StudentController {
 
     @Autowired
     private StudentService studentService;
