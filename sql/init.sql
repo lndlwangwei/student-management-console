@@ -33,3 +33,11 @@ create table clazz
   create_time datetime not null,
   update_time datetime not null
 );
+
+create table user
+(
+  id int not null primary key auto_increment,
+  name varchar(50) not null unique,
+  role varchar(20) not null ,
+  password varchar(50) not null
+);

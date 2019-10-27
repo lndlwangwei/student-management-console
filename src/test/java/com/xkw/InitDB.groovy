@@ -2,7 +2,7 @@ package com.xkw
 
 class InitDB extends GTestBase {
 
-    def "init user"() {
+    def "init student"() {
         expect:
         200.times {index ->
             def userName = "wangwei${index}"
@@ -23,7 +23,7 @@ class InitDB extends GTestBase {
             def score = "score${index}"
             def dormitory = "dormitory${index % 30 + 1}"
             def source = "source${index}"
-            def sqlStatement = "insert into user value (null, '${userName}', '${age}', '${gender}', " +
+            def sqlStatement = "insert into student value (null, '${userName}', '${age}', '${gender}', " +
                     "'${cardId}', '${className}', '${hometown}', '${nation}', '${contact}', '${emergencyContact}', '${graduateSchool}'," +
                     " ${graduateTime}, '${specialty}', '${score}', '${dormitory}', '${source}', now(), now())"
             sql.executeInsert(sqlStatement)
@@ -37,6 +37,17 @@ class InitDB extends GTestBase {
 
             def sqlStatement = "insert into clazz value (null, '${name}', now(), now())"
             sql.executeInsert(sqlStatement)
+        }
+    }
+
+    def "init user"() {
+        expect:
+        sql.executeInsert("insert into user value (null, 'admin', 'admin', 'admin')")
+        10.times {index ->
+            def username = "user${index}"
+            def role = "user"
+            def password = "user${index}"
+            sql.executeInsert("insert into user value (null, '${username}', '${role}', '${password}')")
         }
     }
 
